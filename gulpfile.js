@@ -85,7 +85,7 @@ const watchFiles = () => {
 };
 
 const deploy = () => {
-  return src('./build/**/*').pipe(ghPages());
+  return src('./build/').pipe(ghPages());
 };
 
 const build = series(clear, parallel(styles, html, img, js));
@@ -94,4 +94,4 @@ const watches = parallel(watchFiles);
 task('grid', grid);
 task('build', build);
 task('watch', series(build, watches));
-task('deploy', series(build, deploy));
+task('deploy', deploy);
