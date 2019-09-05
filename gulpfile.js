@@ -85,7 +85,12 @@ const watchFiles = () => {
 };
 
 const deploy = () => {
-  return src('./build/').pipe(ghPages());
+  return src('./build/**/*').pipe(
+    ghPages({
+      remoteUrl: 'git@github.com:MarsFM/itfb',
+      branch: 'gh-pages',
+    })
+  );
 };
 
 const build = series(clear, parallel(styles, html, img, js));
