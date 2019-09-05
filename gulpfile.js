@@ -32,7 +32,6 @@ const clear = () => {
 
 const styles = () => {
   return src('./dev/styles/**/*.less')
-    .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(
       autoprefixer({
@@ -42,6 +41,7 @@ const styles = () => {
     )
     .pipe(concat('main.css'))
     .pipe(gcmq())
+    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
     .pipe(sourcemaps.write('.'))
     .pipe(dest('./build/styles'))

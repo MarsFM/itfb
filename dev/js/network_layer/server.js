@@ -4,7 +4,7 @@ export class Server {
   }
 
   getAlbums(value) {
-    return fetch(this.baseUrl)
+    return fetch(this.baseUrl, { mode: 'cors' })
       .then(response => {
         return response.json();
       })
@@ -13,7 +13,7 @@ export class Server {
           const shortData = data.filter(entry => {
             return entry.id <= value;
           });
-          resolve(shortData);
+          resolve(shortData || {});
         });
       })
       .catch(error => {
