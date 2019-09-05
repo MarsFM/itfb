@@ -6,7 +6,7 @@ export class Loader {
   }
 
   start() {
-    this.message.innerHTML = 'Идёт загрузка';
+    this.message.innerHTML = 'Идёт загрузка...';
     this.elem.append(this.message);
   }
 
